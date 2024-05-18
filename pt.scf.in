@@ -1,0 +1,44 @@
+&control
+    calculation = 'scf',
+    outdir = '.',
+    prefix = 'platinum_surface',
+    verbosity = 'high',
+    pseudo_dir = '.',
+    tstress = .true.,
+    tprnfor = .true.,
+/
+&system
+    ibrav = 6,
+    A = 2.810651167373,
+    C = 18.0,
+    nat=8,
+    ntyp=1,
+    ecutrho= 900,
+    ecutwfc= 100,
+    occupations = 'smearing',
+    smearing = 'marzari-vanderbilt',
+    degauss = 0.02,
+/
+&electrons
+    diagonalization='david',
+    conv_thr =  1.0d-8,   
+    mixing_mode = 'plain', 
+    mixing_beta = 0.700d0,
+    electron_maxstep = 600,
+/
+
+ATOMIC_SPECIES
+Pt 195.09000 pt_pbe_v1.4.uspp.F.UPF
+ 
+ATOMIC_POSITIONS {alat}
+Pt    0.000  0.000  0.000
+Pt    0.500  0.500  0.7071067811865
+Pt    0.000  0.000  1.4142135623730
+Pt    0.500  0.500  2.121320344
+Pt    0.000  0.000  2.828427125
+Pt    0.500  0.500  3.535533906
+Pt    0.000  0.000  4.242640687
+Pt    0.500  0.500  4.949747468
+ 
+K_POINTS {automatic}
+15 15 15 0 0 0
