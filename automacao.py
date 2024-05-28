@@ -1,3 +1,10 @@
+# Created by Rafael Silva and Yessamin Lima
+# Contact: rafaelps.fis@gmail.com
+# Last update: 27/05/2024
+
+# Possible improve: add function to verify if ram is 90% of usage and kill quantum express if its happens.
+# Possible improve: add function to send an e-mail if the above happens.
+
 import os
 import shutil
 import psutil
@@ -17,8 +24,9 @@ output_name = 'pt.scf.out'
 with open(f'{path}/{input_name}', 'r') as file:
     text = file.readlines()
 
-# PARAM C IS IN LINE 12
+# PARAM C IS IN LINE 12, FOR OTHER PARAMETERS THIS PROGRAM MUST TO BE REVIEWED.
 
+# CHANGING PARAM C MULTIPLAY TIMES WITH THE VARIATION INFORMED
 while param_c > final_c -1:
     print(f'AVISO! Iniciando cálculos para C = {param_c} ...')
     shutil.copyfile(input_name, f'TEMP{input_name}')
@@ -32,6 +40,7 @@ while param_c > final_c -1:
         os.remove(f'TEMP{input_name}')
 
     # RUNNING QUANTUM EXPRESS
+    # ITS ONLY AN EXAMPLE, THE INPUT MUST TO BE VERIFIED.
     os.system(f'~/qe-7.0/bin/pw.x < {input_name} > {output_name}')
 
     # VERIFYING IF QUANTUM EXPRESS PROCCESS IS RUNNING BEFORE CONTINUE
